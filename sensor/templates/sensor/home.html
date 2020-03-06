@@ -1,0 +1,36 @@
+{% extends 'sensor/base.html' %}
+
+{% load static %}
+
+{% block content %}
+    <section class="hero">
+        <div class="hero-body">
+            <div class="container">
+                <div class="columns">
+                    <div class="column is-8">
+                        <h1 class="title">
+                            Online
+                        </h1>
+                        <h2 class="subtitle">
+                            Oil Condition Monitoring
+                        </h2>
+                        <p>Techenomics International is a multinational company providing cutting edge oil analysis,
+                            fluid management and condition monitoring services to the mining, transport, marine, power
+                            and industrial sectors.</p>
+                        <br>
+                        <p>Lubricating oil condition determines the reliability of equipments. Monitoring the
+                            condition is very important to do and useful to capture machines' actual condition and for
+                            predictive maintenance purpose.</p>
+                    </div>
+                    <div class="column">
+                        <figure class="image">
+                            <img src="{% static 'sensor/col.jpg' %}" alt="" width="200">
+{#                            <img src="https://www.techenomics.sg/wp-content/uploads/2017/05/blue-oceans-logo2.png" alt="">#}
+{#                            <img src="https://www.eoncollective.com/wp-content/uploads/2017/01/iotcloudf.png" alt="">#}
+                        </figure>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'sensor/base.html' %}
+{% load widget_tweaks %}
+{% load static %}
+
+{% block content %}
+    <div class="section">
+        <div class="">
+            <div class="columns">
+                <div class="column is-one-quarter">
+                    {% include 'sensor/left_nav.html' %}
+                </div>
+                <div class="column is-one-third">
+                    <div class="panel">
+                        <p class="panel-heading">New Sensor</p>
+                        <div class="panel-block">
+                            <form method="POST" action="{% url 'new_sensor' machine_id %}">
+                                {% csrf_token %}
+                                {% if form.errors %}
+                                    <p class="is-size-7 has-text-danger">There are errors in the form!</p>
+                                    <br>
+                                {% endif %}
+                                <div class="field">
+                                    <label class="label">Name</label>
+                                    <div class="control">
+                                        {% render_field form.name class="input" placeholder="Sensor Name" %}
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <label class="label">Compartment</label>
+                                    <div class="control">
+                                        {% render_field form.compartment class="input" placeholder="Engine, Transmission, Final Drive, etc." %}
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="field">
+                                    <div class="control">
+                                        <button class="button is-link" type="submit">Submit</button>
+                                    </div>
+                                </div>
+                                <br>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

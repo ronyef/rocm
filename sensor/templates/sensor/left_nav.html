@@ -1,0 +1,33 @@
+<nav class="panel">
+                    <p class="panel-heading">
+                        Machines
+                    </p>
+                    <div class="panel-block">
+                        <p class="control has-icons-left">
+                            <input class="input" type="text" placeholder="Search">
+                            <span class="icon is-left">
+                                <i class="fas fa-search" aria-hidden="true"></i>
+                              </span>
+                        </p>
+                    </div>
+                    <p class="panel-tabs">
+                        <a class="is-active">All</a>
+                        <a>Eng</a>
+                        <a>XMSN</a>
+                        <a>F Drive</a>
+                        <a>Others</a>
+                    </p>
+                    {% for machine in machines %}
+                        <a class="panel-block" href="{% url 'sensors' machine.id %}">
+                        <span class="panel-icon">
+                          <i class="fas fa-truck-monster" aria-hidden="true"></i>
+                        </span>
+                            {{ machine.name }}
+                        </a>
+                    {% endfor %}
+                    <div class="panel-block">
+                        <a class="button is-link is-outlined is-fullwidth" href="{% url 'new_machine' %}">
+                            New Machine
+                        </a>
+                    </div>
+                </nav>

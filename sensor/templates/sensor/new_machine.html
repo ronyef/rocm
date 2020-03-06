@@ -1,0 +1,55 @@
+{% extends 'sensor/base.html' %}
+{% load widget_tweaks %}
+{% load static %}
+
+{% block content %}
+    <div class="section">
+        <div class="">
+            <div class="columns">
+                <div class="column is-one-quarter">
+                    {% include 'sensor/left_nav.html' %}
+                </div>
+                <div class="column is-one-third">
+                    <div class="panel">
+                        <p class="panel-heading">New Machine</p>
+                        <div class="panel-block">
+                            <form method="POST" action="{% url 'new_machine' %}">
+                                {% csrf_token %}
+                                {% if form.errors %}
+                                    <p class="is-size-7 has-text-danger">There are errors in the form!</p>
+                                    <br>
+                                {% endif %}
+                                <div class="field">
+                                    <label class="label">Name</label>
+                                    <div class="control">
+                                        {% render_field form.name class="input" placeholder="Machine name" %}
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <label class="label">Make</label>
+                                    <div class="control">
+                                        {% render_field form.make class="input" placeholder="Caterpillar, Komatsu, etc." %}
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <label class="label">Site</label>
+                                    <div class="control">
+                                        {% render_field form.site class="input" placeholder="Site" %}
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="field">
+                                    <div class="control">
+                                        <button class="button is-link" type="submit">Submit</button>
+                                    </div>
+                                </div>
+                                <br>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

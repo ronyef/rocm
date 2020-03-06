@@ -1,0 +1,50 @@
+{% extends 'sensor/base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="section">
+        <div class="">
+            <div class="columns">
+                <div class="column is-one-quarter">
+                    {% include 'sensor/left_nav.html' %}
+                </div>
+                <div class="column">
+                    <div class="panel">
+                        <div class="panel-heading">
+                            <p>{{ sensor }}</p>
+                            <p class="is-size-7 has-text-info">{{ sensor.machine }} - {{ sensor.compartment }}</p>
+                        </div>
+                        <div class="panel-block">
+                            {% if values %}
+                                <table class="table is-striped is-hoverable">
+                                    <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Time</th>
+                                        <th>Viscosity</th>
+                                        <th>Temperature</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for value in values %}
+                                        <tr>
+                                            <td>{{ value.timestamp|date:"SHORT_DATE_FORMAT" }}</td>
+                                            <td>{{ value.timestamp|date:"H:i" }}</td>
+                                            <td>{{ value.viscosity }}</td>
+                                            <td>{{ value.temperature }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            {% else %}
+                               <h1  class="has-text-info is-size-4">Sensor has no data</h1>
+                            {% endif %}
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

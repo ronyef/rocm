@@ -1,0 +1,49 @@
+{% extends 'sensor/base.html' %}
+{% load widget_tweaks %}
+
+{% block content %}
+    <div class="section">
+        <div class="container">
+            <h1 class="title is-3">Sign Up</h1>
+            <div class="columns">
+                <div class="column is-one-third">
+                    <form method="POST" action="{% url 'register' %}">
+                        {% csrf_token %}
+                        {% if form.errors %}
+                            <p class="is-size-7 has-text-danger">There are errors in the form!</p>
+                            <br>
+                        {% endif %}
+                        <div class="field">
+                            <label class="label">Username</label>
+                            <div class="control">
+                                {% render_field form.username class="input" placeholder="Username" %}
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">Password</label>
+                            <div class="control">
+                                {% render_field form.password1 class="input" placeholder="Password" %}
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">Confirm Password</label>
+                            <div class="control">
+                                {% render_field form.password2 class="input" placeholder="Confirm Password" %}
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="control">
+                                <button class="button is-link" type="submit">Signup</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="column">
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}
